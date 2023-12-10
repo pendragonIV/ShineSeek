@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool isGameWin = false;
     private bool isGameLose = false;
     private bool isGameStart = false;
-    private float startCountDown = 3f;
+    private float startCountDown = 5.5f;
     #endregion
 
     private void Start()
@@ -85,6 +85,12 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         isGameLose = true;
+        StartCoroutine(WaitToLose());
+    }
+
+    private IEnumerator WaitToLose()
+    {
+        yield return new WaitForSeconds(.5f);
         sceneChanger.ChangeToGameScene();
     }
 

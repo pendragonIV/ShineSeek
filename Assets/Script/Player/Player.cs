@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Lightning")
         {
+            collision.GetComponent<SpriteRenderer>().color = Color.white;
             GameManager.instance.Lose();    
         }
         if(collision.gameObject.tag == "Diamond")
@@ -73,19 +74,31 @@ public class Player : MonoBehaviour
     #region Input System
     private void OnLeft()
     {
-        movementDirection = Vector2.left;
+        if(!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
+        {
+            movementDirection = Vector2.left;
+        }
     }
     private void OnRight()
     {
-        movementDirection = Vector2.right;
+        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
+        {
+            movementDirection = Vector2.right;
+        }
     }
     private void OnTop()
     {
-        movementDirection = Vector2.up;
+        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
+        {
+            movementDirection = Vector2.up;
+        }
     }
     private void OnBot()
     {
-        movementDirection = Vector2.down;
+        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
+        {
+            movementDirection = Vector2.down;
+        }
     }
     #endregion
 }

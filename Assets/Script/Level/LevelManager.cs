@@ -26,6 +26,6 @@ public class LevelManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        levelData.SaveDataJSON();
+        //levelData.SaveDataJSON();
     }
 }
