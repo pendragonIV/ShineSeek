@@ -13,6 +13,19 @@ public class GameScene : MonoBehaviour
     private Button replayButton;
     [SerializeField]
     private Button homeButton;
+    [SerializeField]
+    private Text countDown;
+
+    public void SetCountDown(float X)
+    {
+        countDown.text = ((int)X).ToString();
+    }
+
+    public void CloseCountdown()
+    {
+        overlayPanel.gameObject.SetActive(false);
+        countDown.gameObject.SetActive(false);
+    }
 
     public void ShowWinPanel()
     {

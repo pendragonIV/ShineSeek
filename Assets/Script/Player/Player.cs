@@ -26,16 +26,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(movementDirection != Vector2.zero && !GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin())
+        if (GameManager.instance.IsGameStart())
         {
-            Vector3Int cellPos = GridCellManager.instance.GetObjCell(transform.position);
-            Vector3Int nextCellPos = cellPos + new Vector3Int((int)movementDirection.x, (int)movementDirection.y, 0);
-            if (GridCellManager.instance.IsPlaceableArea(nextCellPos))
+            if (movementDirection != Vector2.zero && !GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin())
             {
-                this.transform.position = GridCellManager.instance.PositonToMove(nextCellPos);
+                Vector3Int cellPos = GridCellManager.instance.GetObjCell(transform.position);
+                Vector3Int nextCellPos = cellPos + new Vector3Int((int)movementDirection.x, (int)movementDirection.y, 0);
+                if (GridCellManager.instance.IsPlaceableArea(nextCellPos))
+                {
+                    this.transform.position = GridCellManager.instance.PositonToMove(nextCellPos);
+                }
+                SetRandomSprite();
+                movementDirection = Vector2.zero;
             }
-            SetRandomSprite();
-            movementDirection = Vector2.zero;
         }
     }
 

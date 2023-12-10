@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,23 +22,45 @@ public class GameManager : MonoBehaviour
     public SceneChanger sceneChanger;
     public GameScene gameScene;
 
-    public GameObject lightningContainer;
+    public Transform lightningContainer;
 
     Level currentLevelData;
     #region Game status
-    [SerializeField]
     private bool isGameWin = false;
-    [SerializeField]
     private bool isGameLose = false;
+    private bool isGameStart = false;
+    private float startCountDown = 3f;
     #endregion
 
     private void Start()
     { 
         currentLevelData = LevelManager.instance.levelData.GetLevelAt(LevelManager.instance.currentLevelIndex);
-        lightningContainer = Instantiate(currentLevelData.levelObjects);
+        lightningContainer = Instantiate(currentLevelData.levelObjects).transform.Find("Lightnings");
         
     }
 
+    private void Update()
+    {
+        if (!isGameStart && startCountDown > 0)
+        {
+            startCountDown -= Time.deltaTime;
+            gameScene.SetCountDown(startCountDown);
+        }
+        else if (!isGameStart && startCountDown <= 0)
+        {
+            StartGame();
+        }
+    }
+
+    private void StartGame()
+    {
+        isGameStart = true;
+        foreach (Transform lightning in lightningContainer)
+        {
+            lightning.GetComponent<SpriteRenderer>().DOFade(0, .5f);
+            gameScene.CloseCountdown();
+        }
+    }
 
     public void Win()
     {
@@ -73,6 +96,11 @@ public class GameManager : MonoBehaviour
     public bool IsGameLose()
     {
         return isGameLose;
+    }
+
+    public bool IsGameStart()
+    {
+        return isGameStart;
     }
 }
 
