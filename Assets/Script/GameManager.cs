@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     { 
         currentLevelData = LevelManager.instance.levelData.GetLevelAt(LevelManager.instance.currentLevelIndex);
         lightningContainer = Instantiate(currentLevelData.levelObjects).transform.Find("Lightnings");
-        
     }
 
     private void Update()
@@ -78,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitToWin()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         gameScene.ShowWinPanel();
     }
 
@@ -90,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitToLose()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         sceneChanger.ChangeToGameScene();
     }
 

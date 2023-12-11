@@ -13,43 +13,43 @@ MonoBehaviour:
   m_Name: LevelData
   m_EditorClassIdentifier: 
   levels:
-  - playerSpawnPos: {x: 0, y: 0}
+  - playerSpawnPos: {x: -5.5, y: -0.5}
+    levelObjects: {fileID: 938215557487258825, guid: 1bad3dd31889c1747b8aeed34f6b880d, type: 3}
+    isCompleted: 0
+    isPlayable: 1
+  - playerSpawnPos: {x: 6.5, y: -2.5}
     levelObjects: {fileID: 5443631020975267557, guid: 6a96ddd8cc3101d47a50f826e6c62cc3, type: 3}
     isCompleted: 0
-    isPlayable: 1
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
-    isCompleted: 0
-    isPlayable: 1
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+    isPlayable: 0
+  - playerSpawnPos: {x: -5.5, y: 0.5}
+    levelObjects: {fileID: 3529977391298490472, guid: 5bb7c947334208344a4e2b22175133ac, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: -3.5, y: 1.5}
+    levelObjects: {fileID: 6706814532502388796, guid: 59917ecbb99d65f4b837332576418c17, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: 4.5, y: -2.5}
+    levelObjects: {fileID: 4214350063594401717, guid: 3b749caa94a9e3b4ea085c9a4b3c01c0, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: -5.5, y: -2.5}
+    levelObjects: {fileID: 4624750634240197309, guid: c587be2f522c4ef41bbb28828a0c794e, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: 1.5, y: -3.5}
+    levelObjects: {fileID: 6778632853285243919, guid: 22a75c49ccc9a4447ab1958d316a894f, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: -6.5, y: -3.5}
+    levelObjects: {fileID: 5271909105288643727, guid: df40cd563b19b3d42a9426b37078423b, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: 6.5, y: -2.5}
+    levelObjects: {fileID: 8095186995385007972, guid: 48a80675bfbbffd478274f5e9cb9906d, type: 3}
     isCompleted: 0
     isPlayable: 0
-  - playerSpawnPos: {x: 0, y: 0}
-    levelObjects: {fileID: 0}
+  - playerSpawnPos: {x: -6.5, y: -2.5}
+    levelObjects: {fileID: 893139753871868726, guid: 91f2d593a6fd7844593cd67ea476b007, type: 3}
     isCompleted: 0
     isPlayable: 0

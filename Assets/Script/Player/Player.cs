@@ -1,13 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private Quaternion[] playerRotations;
     #region Sprite 
     [SerializeField]
     private Sprite[] playerSprites;
     [SerializeField]
     private Sprite winSprite;
+    [SerializeField]
+    private Sprite loseSprite;
+    [SerializeField] 
+    private Sprite[] lightningSprites;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     #endregion
@@ -21,6 +28,7 @@ public class Player : MonoBehaviour
     {
 
         SetPlayerCenterCell();
+        this.GetComponent<SpriteRenderer>().enabled = false;
 
     }
 
@@ -47,13 +55,53 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Lightning")
         {
             collision.GetComponent<SpriteRenderer>().color = Color.white;
+            StartCoroutine(LoseAnim());
             GameManager.instance.Lose();    
         }
         if(collision.gameObject.tag == "Diamond")
         {
             spriteRenderer.sprite = winSprite;
             Destroy(collision.gameObject);
+            StartCoroutine(WinAnim());
             GameManager.instance.Win();
+        }
+    }
+
+    private IEnumerator WinAnim()
+    {
+        Transform body = this.transform.Find("Body");
+        int count = 0;
+
+        while (true)
+        {
+            body.transform.rotation = playerRotations[count];
+            count++;
+            if (count == playerRotations.Length)
+            {
+                count = 0;
+            }
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
+    private IEnumerator LoseAnim()
+    {
+        Transform body = this.transform.Find("Body");
+        spriteRenderer.sprite = loseSprite;
+        SpriteRenderer effectSprite = GetComponent<SpriteRenderer>();
+        effectSprite.enabled = true;
+        int count = 0;
+
+        while (true)
+        {
+            effectSprite.sprite = lightningSprites[count];
+            body.transform.rotation = playerRotations[count];
+            count++;
+            if (count == lightningSprites.Length)
+            {
+                count = 0;
+            }
+            yield return new WaitForSeconds(.3f);
         }
     }
 
@@ -66,6 +114,7 @@ public class Player : MonoBehaviour
     #region Default Setup
     private void SetPlayerCenterCell()
     {
+        transform.position = LevelManager.instance.levelData.GetLevelAt(LevelManager.instance.currentLevelIndex).playerSpawnPos;
         Vector3Int cellPos = GridCellManager.instance.GetObjCell(transform.position);
         this.transform.position = GridCellManager.instance.PositonToMove(cellPos);
     }

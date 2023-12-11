@@ -19,10 +19,11 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         tutorPanel.gameObject.SetActive(false);
-        gameLogo.GetComponent<Image>().fillAmount = 0;
 
         gameLogo.GetComponent<CanvasGroup>().alpha = 0f;
         gameLogo.GetComponent<CanvasGroup>().DOFade(1, 2f).SetUpdate(true);
+        gameLogo.GetComponent<RectTransform>().anchoredPosition = new Vector3(-1200, 100, 0);
+        gameLogo.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 100), 1f, false).SetEase(Ease.InOutBack);
         
         StartUpUI();
     }
@@ -37,14 +38,6 @@ public class MainMenu : MonoBehaviour
     {
         playerUI.GetComponent<RectTransform>().anchoredPosition = new Vector3(-700, 200, 0);
         playerUI.GetComponent<RectTransform>().DOAnchorPos(new Vector2(150, 0), 1.5f, false).SetEase(Ease.OutQuint).SetUpdate(true);
-    }
-
-    private void Update()
-    {
-        if(gameLogo.GetComponent<Image>().fillAmount < 1)
-        {
-            gameLogo.GetComponent<Image>().fillAmount += Time.deltaTime / 2;
-        }
     }
 
     public void ShowTutorPanel()
