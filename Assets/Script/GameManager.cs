@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     { 
         currentLevelData = LevelManager.instance.levelData.GetLevelAt(LevelManager.instance.currentLevelIndex);
         lightningContainer = Instantiate(currentLevelData.levelObjects).transform.Find("Lightnings");
+
+        Camera.main.transform.DOShakePosition(8f, .4f, 0, 0, false, true).SetEase(Ease.InSine).SetLoops(-1);
     }
 
     private void Update()
