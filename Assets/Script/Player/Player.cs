@@ -121,32 +121,12 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Input System
-    private void OnLeft()
+
+    public void OnMove(InputValue inputValue)
     {
         if(!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
         {
-            movementDirection = Vector2.left;
-        }
-    }
-    private void OnRight()
-    {
-        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
-        {
-            movementDirection = Vector2.right;
-        }
-    }
-    private void OnTop()
-    {
-        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
-        {
-            movementDirection = Vector2.up;
-        }
-    }
-    private void OnBot()
-    {
-        if (!GameManager.instance.IsGameLose() && !GameManager.instance.IsGameWin() && GameManager.instance.IsGameStart())
-        {
-            movementDirection = Vector2.down;
+            movementDirection = inputValue.Get<Vector2>();
         }
     }
     #endregion
